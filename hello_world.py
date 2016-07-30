@@ -5,10 +5,10 @@ Code example for article
 Распределенное выполнение Python задач...
 """
 
+import time
 import mesos.interface
 from mesos.interface import mesos_pb2
 import mesos.native
-
 
 class SimpleScheduler(mesos.interface.Scheduler):
     """
@@ -62,7 +62,9 @@ def main():
         framework,
         "localhost:5050"
     )
-    driver.run()
+    driver.start()
+    time.sleep(10)
+    driver.stop()
 
 if __name__ == "__main__":
     main()
